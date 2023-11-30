@@ -1,4 +1,4 @@
-### How to Create/Add a User in Jenkins ####
+### How to Create/Add a Users in Jenkins ####
 
 Step 1) Login to Jenkins Dashboard
 
