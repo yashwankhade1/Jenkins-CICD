@@ -144,7 +144,7 @@ server {
 
 }
 
-#### Docker Install ###
+#### Docker Install on jenkins machine ###
 sudo apt install docker.io -y
 sudo chown jenkins:docker /var/run/docker.sock ----need to provide owenership  from root to jenkins user as the jenkins user has permission
 
