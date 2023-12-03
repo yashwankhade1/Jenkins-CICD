@@ -112,7 +112,7 @@ That's it! You have successfully configured SSL on Jenkins using Let's Encrypt a
 vi /etc/nginx/sites-available/jenkins
 
 server {
-    server_name jenkinsdev.techmobi.site;
+    server_name jenkins.cloudworld.fun;
 
     location / {
         allow 54.226.177.182; #allow pritunl ip here
@@ -133,13 +133,13 @@ server {
 }
 
 server {
-    if ($host = jenkinsdev.techmobi.site) {
+    if ($host = jenkins.cloudworld.fun) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
   
 
     listen 80;
-    server_name jenkinsdev.techmobi.site;
+    server_name jenkins.cloudworld.fun;
     return 404; # managed by Certbot
 
 }
@@ -148,7 +148,7 @@ server {
 sudo apt install docker.io -y
 sudo chown jenkins:docker /var/run/docker.sock ----need to provide owenership  from root to jenkins user as the jenkins user has permission
 
-#### Helm Install on Jenkins Machine #####
+#### Helm Install on Jenkins Machine and Master #####
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
@@ -184,7 +184,7 @@ Connection to 23.20.188.108 closed.
 
 now fire this command
 
-Anis@MINGW64 ~/Downloads
+Admin@MINGW64 ~/Downloads
 $ scp -i cicd.pem ubuntu@23.20.188.108:/home/ubuntu/config .
 
 and check the file in local
@@ -197,7 +197,7 @@ Step 1: go to your GitHub repository and click on ‘Settings’.
 Step 2: Click on Webhooks and then click on ‘Add webhook’.
 Step 3: In the ‘Payload URL’ field, paste your Jenkins environment URL. At the end of this URL add /github-webhook/. In the ‘Content type’ select: ‘application/json’ and leave the ‘Secret’ field empty.
 Ex:-http://54.211.236.223:8080/github-webhook/
-https://jenkins.xyz.com//github-webhook/
+https://jenkins.cloudworld.fun//github-webhook/
 
 Step 4: In the page ‘Which events would you like to trigger this webhook?’ choose ‘Let me select individual events.’ Then, check ‘Pull Requests’ and ‘Pushes’. At the end of this option, make sure that the ‘Active’ option is checked and click on ‘Add webhook’.
 
